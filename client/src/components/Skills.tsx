@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { Code, Server, Laptop } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function Skills() {
@@ -15,44 +13,23 @@ export default function Skills() {
     }
   }, [isVisible]);
 
-  const skillCategories = [
-    {
-      title: "Frontend",
-      icon: Code,
-      color: "bg-primary",
-      skills: [
-        { name: "HTML", level: 90 },
-        { name: "CSS", level: 85 },
-        { name: "JavaScript", level: 80 },
-        { name: "ReactJS", level: 75 }
-      ]
-    },
-    {
-      title: "Backend",
-      icon: Server,
-      color: "bg-secondary",
-      skills: [
-        { name: "PHP", level: 85 },
-        { name: "NodeJS", level: 75 },
-        { name: "SQL", level: 80 },
-        { name: "MongoDB", level: 70 }
-      ]
-    },
-    {
-      title: "Programming",
-      icon: Laptop,
-      color: "bg-blue-400",
-      skills: [
-        { name: "Python", level: 85 },
-        { name: "C", level: 80 },
-        { name: "Java", level: 75 },
-        { name: "C++", level: 70 }
-      ]
-    }
+  const skills = [
+    { name: "HTML", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+    { name: "CSS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+    { name: "JavaScript", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+    { name: "ReactJS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+    { name: "NodeJS", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+    { name: "PHP", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" },
+    { name: "Python", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+    { name: "Java", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+    { name: "C++", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" },
+    { name: "MongoDB", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" },
+    { name: "MySQL", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" },
+    { name: "Git", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
   ];
 
   return (
-    <section id="skills" className="py-20 bg-white">
+    <section id="skills" className="py-20 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           ref={ref}
@@ -62,48 +39,48 @@ export default function Skills() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl font-bold text-slate-900">Skills & Technologies</h2>
+          <p className="text-slate-600 mt-4">Technologies I work with</p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {skillCategories.map((category, categoryIndex) => (
-            <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              transition={{ duration: 0.6, delay: categoryIndex * 0.2 }}
-            >
-              <Card className="bg-slate-50 hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-8">
-                  <div className="text-center mb-8">
-                    <div className={`w-16 h-16 ${category.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
-                      <category.icon className="text-white text-2xl" size={32} />
-                    </div>
-                    <h3 className="text-2xl font-semibold text-slate-900">{category.title}</h3>
+        {/* Horizontal scrolling skills */}
+        <div className="relative">
+          <div className="flex space-x-8 animate-scroll">
+            {[...skills, ...skills].map((skill, index) => (
+              <motion.div
+                key={`${skill.name}-${index}`}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.6, delay: (index % skills.length) * 0.1 }}
+                className="flex-shrink-0 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-slate-100 hover:border-primary/20 group"
+              >
+                <div className="text-center">
+                  <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <img 
+                      src={skill.icon} 
+                      alt={skill.name}
+                      className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300"
+                    />
                   </div>
-
-                  <div className="space-y-4">
-                    {category.skills.map((skill, skillIndex) => (
-                      <div key={skill.name}>
-                        <div className="flex justify-between mb-2">
-                          <span className="text-slate-700">{skill.name}</span>
-                          <span className="text-slate-600">{skill.level}%</span>
-                        </div>
-                        <div className="w-full bg-slate-200 rounded-full h-2 overflow-hidden">
-                          <motion.div
-                            className={`${category.color} h-2 rounded-full`}
-                            initial={{ width: 0 }}
-                            animate={animateSkills ? { width: `${skill.level}%` } : { width: 0 }}
-                            transition={{ duration: 1.5, delay: skillIndex * 0.1 }}
-                          />
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
+                  <h3 className="text-sm font-semibold text-slate-700 group-hover:text-primary transition-colors duration-300">
+                    {skill.name}
+                  </h3>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
+
+        {/* Additional skills info */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+          className="text-center mt-12"
+        >
+          <p className="text-slate-600">
+            Constantly learning and exploring new technologies to stay current with industry trends
+          </p>
+        </motion.div>
       </div>
     </section>
   );
