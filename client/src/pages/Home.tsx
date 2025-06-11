@@ -5,6 +5,7 @@ import Education from "@/components/Education";
 import Skills from "@/components/Skills";
 import Certifications from "@/components/Certifications";
 import Projects from "@/components/Projects";
+import Community from "@/components/Community";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Skills />
       <Certifications />
       <Projects />
+      <Community />
       <Contact />
       <Footer />
     </div>

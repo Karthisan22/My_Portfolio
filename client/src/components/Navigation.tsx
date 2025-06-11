@@ -11,7 +11,7 @@ export default function Navigation() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      const sections = ["home", "about", "education", "skills", "projects", "contact"];
+      const sections = ["home", "about", "education", "skills", "projects", "community", "contact"];
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -41,6 +41,7 @@ export default function Navigation() {
     { id: "education", label: "Education" },
     { id: "skills", label: "Skills" },
     { id: "projects", label: "Projects" },
+    { id: "community", label: "Community" },
     { id: "contact", label: "Contact" },
   ];
 

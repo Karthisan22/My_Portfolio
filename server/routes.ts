@@ -1,7 +1,7 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSchema } from "@shared/schema";
+import { insertContactSchema, insertCommunityMessageSchema, insertFeedbackSchema } from "@shared/schema";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -34,6 +34,68 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.json(contacts);
     } catch (error) {
       res.status(500).json({ message: "Failed to fetch contacts" });
+    }
+  });
+
+  // Community message routes
+  app.post("/api/community/messages", async (req, res) => {
+    try {
+      const messageData = insertCommunityMessageSchema.parse(req.body);
+      const message = await storage.createCommunityMessage(messageData);
+      res.json({ success: true, message: "Message posted successfully!", data: message });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          success: false, 
+          message: "Invalid message data", 
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ 
+          success: false, 
+          message: "Failed to post message" 
+        });
+      }
+    }
+  });
+
+  app.get("/api/community/messages", async (req, res) => {
+    try {
+      const messages = await storage.getCommunityMessages();
+      res.json(messages);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch messages" });
+    }
+  });
+
+  // Feedback routes
+  app.post("/api/feedback", async (req, res) => {
+    try {
+      const feedbackData = insertFeedbackSchema.parse(req.body);
+      const feedback = await storage.createFeedback(feedbackData);
+      res.json({ success: true, message: "Feedback submitted successfully!", data: feedback });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        res.status(400).json({ 
+          success: false, 
+          message: "Invalid feedback data", 
+          errors: error.errors 
+        });
+      } else {
+        res.status(500).json({ 
+          success: false, 
+          message: "Failed to submit feedback" 
+        });
+      }
+    }
+  });
+
+  app.get("/api/feedback", async (req, res) => {
+    try {
+      const feedbacks = await storage.getFeedbacks();
+      res.json(feedbacks);
+    } catch (error) {
+      res.status(500).json({ message: "Failed to fetch feedback" });
     }
   });
 
