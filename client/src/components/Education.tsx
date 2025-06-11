@@ -9,15 +9,15 @@ export default function Education() {
   const educationData = [
     {
       degree: "BE Computer Science And Engineering",
-      institution: "Chartered College of Engineering and Technology",
+      institution: "Chettinad College of Engineering and Technology",
       period: "2021 - 2025",
       grade: "CGPA: 7.53",
       side: "left"
     },
     {
-      degree: "MSc",
+      degree: "HSC",
       institution: "SKV Hr.Sec. School",
-      period: "2018 - 2020",
+      period: "2019 - 2020",
       grade: "Percentage: 63%",
       side: "right"
     },

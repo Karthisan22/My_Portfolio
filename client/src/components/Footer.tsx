@@ -10,7 +10,7 @@ export default function Footer() {
           
           <div className="flex justify-center space-x-6 mb-8">
             <a 
-              href="https://www.linkedin.com/in/karthisan2929" 
+              href="www.linkedin.com/in/karthis22gem" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-white transition-all hover:scale-110 duration-300"
@@ -26,7 +26,7 @@ export default function Footer() {
               <Github size={32} />
             </a>
             <a 
-              href="mailto:karthisan2929@gmail.com"
+              href="mailto:karthim978789@gmail.com"
               className="text-slate-400 hover:text-white transition-all hover:scale-110 duration-300"
             >
               <Mail size={32} />

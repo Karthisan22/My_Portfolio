@@ -59,19 +59,19 @@ export default function Contact() {
     {
       icon: Mail,
       title: "Email",
-      value: "karthisan2929@gmail.com",
+      value: "karthim978789@gmail.com",
       color: "bg-primary"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+91 6146180309",
+      value: "+918754150560",
       color: "bg-secondary"
     },
     {
       icon: Linkedin,
       title: "LinkedIn",
-      value: "linkedin.com/in/karthisan2929",
+      value: "www.linkedin.com/in/karthis22gem",
       color: "bg-blue-400"
     }
   ];

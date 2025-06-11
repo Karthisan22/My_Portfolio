@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Download, Mail, Github, Linkedin } from "lucide-react";
+import karthiiImage from "./img/karthii.jpg";
 
 export default function Hero() {
   const scrollToContact = () => {
@@ -22,7 +23,7 @@ export default function Hero() {
             className="flex-shrink-0"
           >
             <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&h=400" 
+              src={karthiiImage} 
               alt="Professional portrait" 
               className="w-48 h-48 lg:w-56 lg:h-56 rounded-full object-cover shadow-2xl hover:scale-105 transition-transform duration-500 border-4 border-white"
             />
@@ -59,7 +60,7 @@ export default function Hero() {
                 className="hover:scale-105 transition-transform duration-300"
                 asChild
               >
-                <a href="#" download>
+                <a href="https://drive.google.com/file/d/1mY9T1ZiwgefXVP1Zy_r46JX5jCSEO64x/view?usp=drive_link" download>
                   <Download className="mr-2 h-4 w-4" />
                   Download Resume
                 </a>
@@ -68,7 +69,7 @@ export default function Hero() {
 
             <div className="flex space-x-6 justify-center lg:justify-start">
               <a 
-                href="https://www.linkedin.com/in/karthisan2929" 
+                href="www.linkedin.com/in/karthis22gem" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-slate-600 hover:text-primary transition-all hover:scale-110 duration-300"
@@ -84,7 +85,7 @@ export default function Hero() {
                 <Github className="h-8 w-8" />
               </a>
               <a 
-                href="mailto:karthisan2929@gmail.com"
+                href="mailto:karthim978789@gmail.com"
                 className="text-slate-600 hover:text-primary transition-all hover:scale-110 duration-300"
               >
                 <Mail className="h-8 w-8" />
